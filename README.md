@@ -1,46 +1,53 @@
-# Proyecto Integrador — Plataforma Web para la Gestión de Eventos y Reservas
+# Proyecto Integrador: Plataforma Web para la Gestión de Eventos y Reservas
 
-Frontend académico migrado a **Angular 20**. Está diseñado para demostrar navegación, autenticación por roles, gestión de eventos, reservas y dashboard de administración.
+Proyecto Angular 20 desarrollado a partir del avance anterior y adaptado a los requisitos de **Web 1** y **Bases de Datos**.
 
-## Requisitos
-- Node.js 20+
-- npm
-- Angular CLI 20
+## Tecnologías
+- Angular 20 y TypeScript
+- HTML5 y SCSS por componente
+- Bootstrap 5
+- Angular Router
+- Datos simulados (`MockDataService`)
 
-## Ejecutar
+## Ejecutar en Linux Mint / Visual Studio Code
+Requiere Node.js y npm compatibles con Angular 20.
+
 ```bash
 npm install
-ng serve -o
+npm start
 ```
 
-## Usuarios de demostración
-- Cliente: `cliente@eventia.com` / `123456`
-- Agente: `agente@eventia.com` / `123456`
-- Administrador: `admin@eventia.com` / `123456`
-
-## Funciones incluidas
-- Registro e inicio de sesión.
-- Roles: cliente, agente y administrador.
-- Catálogo y detalle de eventos.
-- Creación de reservas y cancelación por cliente.
-- Panel del agente para crear eventos y confirmar reservas.
-- Dashboard del administrador con conteos, ingresos, reservas por evento y cobertura.
-- Modelos de Usuario, Evento y Reserva.
-- Datos de demostración persistidos en `localStorage`.
-- Guards de rutas por rol.
-- Diseño responsive con SCSS.
-
-## Importante para la siguiente etapa
-Los datos actuales son **mock/localStorage**, como base funcional del frontend. El enunciado académico también contempla CRUD de personas/clientes/agentes/administradores, países/departamentos/ciudades y reportes más amplios. Para una entrega que exija base de datos real, debe conectarse a un backend y PostgreSQL en la etapa correspondiente.
+Abrir http://localhost:4200
 
 ## Rutas principales
-- `/`
-- `/login`
-- `/registro`
-- `/eventos`
-- `/eventos/:id`
-- `/cliente/reservas`
-- `/agente/eventos`
-- `/agente/nuevo-evento`
-- `/agente/reservas`
-- `/admin/reportes`
+- `/login` y `/registro`: autenticación visual
+- `/eventos` y `/eventos/:id`: catálogo y detalle
+- `/cliente/reservas`: reservas del cliente
+- `/agente/nuevo-evento`: formulario de evento
+- `/agente/eventos`: eventos del agente
+- `/agente/reservas`: administración de reservas
+- `/admin/reportes`: reportes y gráficas
+
+## Datos de demostración
+El servicio `src/app/services/mock-data.service.ts` contiene datos simulados para la presentación. Se mantiene la demostración local del avance anterior en otros servicios; **no es autenticación segura ni backend real**.
+
+Cuentas del prototipo anterior: `cliente@eventia.com`, `agente@eventia.com`, `admin@eventia.com`; clave de prueba `123456`. No usar estas credenciales en producción.
+
+## Bases de Datos
+En `documentacion/bases-de-datos/` se encuentran:
+- `Modelo_Entidad_Relacion.drawio`
+- `Esquema_Relacional.drawio`
+- `Diagramas_Bases_de_Datos.pdf`
+- `esquema.sql` (referencia opcional; no se conecta a Angular)
+
+Los diagramas `.drawio` pueden abrirse y editarse en https://app.diagrams.net/.
+
+## Entrega y commits
+```bash
+git add .
+git commit -m "feat: adaptar frontend Angular y documentar modelos de datos"
+git push origin main
+```
+Verificar el estándar de mensajes de commit específico acordado en clase, ya que los PDF no detallan su sintaxis.
+
+**Nota:** este avance no requiere conexión real con bases de datos, APIs ni backend.

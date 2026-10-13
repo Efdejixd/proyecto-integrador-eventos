@@ -1,0 +1,15 @@
+<header class="nav">
+    <a routerLink="/" class="brand">EVENTIA</a>
+    <nav>
+      <a routerLink="/eventos">Eventos</a>
+      @if (!auth.usuario()) {
+        <a routerLink="/login">Ingresar</a><a routerLink="/registro" class="pill">Registrarse</a>
+      } @else {
+        @if (auth.tieneRol('cliente')) { <a routerLink="/cliente/reservas">Mis reservas</a> }
+        @if (auth.tieneRol('agente')) { <a routerLink="/agente/eventos">Gestión</a> }
+        @if (auth.tieneRol('administrador')) { <a routerLink="/admin/reportes">Reportes</a> }
+        <span class="user">{{auth.usuario()?.nombre}}</span>
+        <button (click)="auth.logout()">Salir</button>
+      }
+    </nav>
+  </header>

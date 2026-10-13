@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { DataService } from '../../services/data.service';
+import { MockDataService } from '../../services/mock-data.service';
 import { Evento } from '../../models/models';
-@Component({selector:'app-eventos',standalone:true,imports:[RouterLink],template:`
-<section class="wrap"><div class="head"><div><span>DESCUBRE</span><h1>Próximos eventos</h1></div></div>
-<div class="grid">@for(e of eventos;track e.id){<article><div class="cover">🎭</div><div class="body"><span class="status">{{e.estado}}</span><h2>{{e.nombre}}</h2><p>📍 {{e.teatro}} · {{e.ciudad}}</p><p>📅 {{fecha(e.fechaInicio)}}</p><div class="bottom"><b>{{dinero(e.precioBase)}}</b><a [routerLink]="['/eventos',e.id]">Ver evento</a></div></div></article>}</div></section>`,
-styles:[`.wrap{padding:50px 7%;max-width:1250px;margin:auto}.head span{color:#6d5dfc;font-weight:900}.head h1{font-size:2.5rem;margin:7px 0 30px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}article{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px #0f172a12}.cover{height:170px;display:grid;place-items:center;font-size:4rem;background:linear-gradient(135deg,#312e81,#7c3aed)}.body{padding:20px}.status{font-size:.75rem;background:#ede9fe;color:#5b21b6;padding:5px 9px;border-radius:20px;font-weight:800}.body h2{margin:13px 0 8px}.body p{color:#64748b}.bottom{display:flex;justify-content:space-between;align-items:center;margin-top:18px}.bottom a{background:#6d5dfc;color:#fff;text-decoration:none;padding:9px 12px;border-radius:8px}@media(max-width:850px){.grid{grid-template-columns:1fr 1fr}}@media(max-width:550px){.grid{grid-template-columns:1fr}}`]})
-export class Eventos {eventos:Evento[]=[];constructor(private data:DataService){this.eventos=data.eventos().filter(x=>x.estado!=='Cancelado');}fecha(v:string){return new Date(v).toLocaleString('es-CO',{dateStyle:'medium',timeStyle:'short'});}dinero(v:number){return v.toLocaleString('es-CO',{style:'currency',currency:'COP',maximumFractionDigits:0});}}
+@Component({selector:'app-eventos',standalone:true,imports:[RouterLink],templateUrl:'./eventos.html',styleUrl:'./eventos.scss'})
+export class Eventos {eventos:Evento[]=[];constructor(private data:MockDataService){this.eventos=data.eventos.filter(x=>x.estado!=='Cancelado');}fecha(v:string){return new Date(v).toLocaleString('es-CO',{dateStyle:'medium',timeStyle:'short'});}dinero(v:number){return v.toLocaleString('es-CO',{style:'currency',currency:'COP',maximumFractionDigits:0});}}

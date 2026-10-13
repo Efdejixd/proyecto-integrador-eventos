@@ -1,0 +1,2 @@
+<section class="wrap"><h1>Mis reservas</h1><p>Consulta el estado de tus entradas.</p>
+<div class="list">@for(r of reservas;track r.id){<article><div><span>#{{r.id}}</span><h2>{{evento(r.eventoId)}}</h2><p>{{r.entradas}} entrada(s) · {{dinero(r.total)}}</p></div><div><b [class.cancel]="r.estado==='Cancelada'">{{r.estado}}</b>@if(r.estado!=='Cancelada'){<button (click)="cancelar(r)">Cancelar</button>}</div></article>}@empty{<div class="empty">Aún no tienes reservas. Explora los eventos disponibles.</div>}</div></section>

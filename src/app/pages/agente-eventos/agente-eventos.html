@@ -1,0 +1,2 @@
+<section class="wrap"><div class="top"><div><span>PANEL DEL AGENTE</span><h1>Mis eventos</h1></div><a routerLink="/agente/nuevo-evento">+ Nuevo evento</a></div>
+<div class="table"><div class="row header"><b>Código</b><b>Evento</b><b>Ciudad</b><b>Estado</b><b>Precio</b></div>@for(e of eventos;track e.id){<div class="row"><span>{{e.codigo}}</span><b>{{e.nombre}}</b><span>{{e.ciudad}}</span><span>{{e.estado}}</span><span>{{dinero(e.precioBase)}}</span></div>}</div><a routerLink="/agente/reservas" class="link">Administrar reservas →</a></section>

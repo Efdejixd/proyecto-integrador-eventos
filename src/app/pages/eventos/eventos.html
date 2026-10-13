@@ -1,0 +1,2 @@
+<section class="wrap"><div class="head"><div><span>DESCUBRE</span><h1>Próximos eventos</h1></div></div>
+<div class="grid">@for(e of eventos;track e.id){<article><div class="cover">🎭</div><div class="body"><span class="status">{{e.estado}}</span><h2>{{e.nombre}}</h2><p>📍 {{e.teatro}} · {{e.ciudad}}</p><p>📅 {{fecha(e.fechaInicio)}}</p><div class="bottom"><b>{{dinero(e.precioBase)}}</b><a [routerLink]="['/eventos',e.id]">Ver evento</a></div></div></article>}</div></section>
